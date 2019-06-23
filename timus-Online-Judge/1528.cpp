@@ -18,38 +18,36 @@ using namespace __gnu_pbds;
 typedef long long ll;
 #define ordered_set tree<ll , null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 
-const ll N = 2e5+7;
+const ll N = 1e4+7;
 const ll MOD = 1e9+7;
 
-
-ll dp[50005][3];
-ll n, a, b;
-
+ll g[N],f[N];
+ll pf[N], pg[N];
 
 
 int main(){
 	fast;
-	dp[0][1] = 1;
-	dp[0][2] = 1;
-	cin>>n>>a>>b;
-	
-	ll ans = 0;
-	
-	for(int i = 0; i <= n; i++){
+	ll n, p;
+	while(1){
+		cin>>n>>p;
+		if(n == 0 && p == 0) break;
+		g[1] = pg[1] = 1;
+		f[1] = pf[1] = 1;
 		
-		for(int j = 1; j<=a && i+j<=n; j++){
-			dp[i+j][1] = (dp[i+j][1] + dp[i][2]) % MOD;
+		for(int i = 2; i < n; i++){
+			g[i] = (2 * pg[i - 1] + 1) % p;
+			g[i] = (g[i] - ((g[i-1] * g[i-1]) % p) + p)%p;
+			pg[i] = (g[i] + pg[i-1]) % p;
 		}
 		
-		for(int j = 1; j<=b && i+j<=n; j++){
-			dp[i+j][2] = (dp[i+j][2] + dp[i][1]) % MOD;
+		for(int i = 2; i <= n; i++){
+			f[i] = (pf[i-1] + 1)%p;
+			pf[i] = (pf[i-1] + ((f[i] * g[i]) % p)) % p;
 		}
+		
+		cout<<f[n]<<'\n';
 		
 	}
-	
-	ans = (dp[n][1] + dp[n][2]) % MOD;
-	
-	cout<<ans<<'\n';
 	
 	return 0;
 }

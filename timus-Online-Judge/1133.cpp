@@ -48,15 +48,12 @@ int main(){
 		swap(a,b);
 		swap(fa, fb);
 	}
-	
-	//debug2(a, b);
-	
+
 	ll fa_1;
 	
 	ll lo = -inf, hi = inf+1;
 	while(lo < hi){
 		ll mid = (lo + hi)>>1;
-		//debug3(lo, hi, mid);
 		ll cpk = chk(mid);
 		if(cpk <= fb - fa || fa - mid < -inf){
 			lo = mid+1;
@@ -70,21 +67,17 @@ int main(){
 	}
 	
 	
-	//debug2(fa_1, fa);
-	
 	if(n == a){
 		cout<<fa<<'\n';
 		return 0;
 	}
 	
 	if(n < a){
-		//cerr<<"if\n";
 		int suf = a-1;
 		ll two = fa+fa_1;
 		ll one = fa;
 		ll z;
 		while(suf >= n){
-			//debug(suf);
 			z = two - one;
 			two = one;
 			one = z;
@@ -93,13 +86,11 @@ int main(){
 		
 		cout<<z<<'\n';
 	} else {
-		//cerr<<"else\n";
 		int suf = a+1;
 		ll two = fa;
 		ll one = fa_1;
 		ll z;
 		while(suf <= n){
-			//debug(suf);
 			z = two + one;
 			one = two;
 			two = z;

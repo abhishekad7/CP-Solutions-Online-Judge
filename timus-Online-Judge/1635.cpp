@@ -85,18 +85,9 @@ int main(){
 	
 	cout<<dp[0] <<'\n';
 	
-	/*for(int i = 0; i <= n; i++) cerr<<dp[i]<<' ';
-	cout<<'\n';
-	
-	for(int i = 0; i < n; i++) cerr<<nxt[i]<<' ';
-	cout<<'\n';*/
-	
-	//cout<<dp[n] <<'\n';
-	
 	int i = 0;
 	while(i < n){
 		int r = nxt[i];
-		//debug2(i, r);
 		for(int j = i; j <= r; j++){
 			cout<<s[j];
 		}

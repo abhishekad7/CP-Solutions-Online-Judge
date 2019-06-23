@@ -60,7 +60,6 @@ int main(){
 	for(int i = 0; i < q; i++){
 		cin>>qry[i];
 		qry[i]--;
-		//debug(qry[i]);
 		edges[qry[i]].valid = 0;
 	}
 	par.resize(n+1);
@@ -71,7 +70,6 @@ int main(){
 		v = edges[i].v;
 		if(edges[i].valid){
 			merge(u,v);
-			//debug2(u,v);
 		}
 	}
 	
