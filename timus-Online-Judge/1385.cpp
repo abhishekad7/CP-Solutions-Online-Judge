@@ -25,6 +25,10 @@ const ll INF = 2e18+7;
 
 int main(){
 	fast;
+	int n;
+	cin>>n;
+	cout<<((n==1)?14:((n==2)?155:1575));
+	for(ll i=1;i<=n-3;i++) cout<<0;	
 	
 	
 	return 0;
